@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{B049EE68-F424-41AD-A3A1-A5EA560D28CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureStorageLib", "AzureStorageLib\AzureStorageLib.csproj", "{167BE6DF-732E-45EE-B811-FF2E8FDA94F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{649D59BD-1EFB-4392-9BF2-6ACD66B47BE8}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Core.dll = Lib\Core.dll
+		Lib\Core.pdb = Lib\Core.pdb
+		Lib\Infrastructure.deps.json = Lib\Infrastructure.deps.json
+		Lib\Infrastructure.dll = Lib\Infrastructure.dll
+		Lib\Infrastructure.pdb = Lib\Infrastructure.pdb
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B049EE68-F424-41AD-A3A1-A5EA560D28CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B049EE68-F424-41AD-A3A1-A5EA560D28CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B049EE68-F424-41AD-A3A1-A5EA560D28CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B049EE68-F424-41AD-A3A1-A5EA560D28CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167BE6DF-732E-45EE-B811-FF2E8FDA94F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167BE6DF-732E-45EE-B811-FF2E8FDA94F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167BE6DF-732E-45EE-B811-FF2E8FDA94F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167BE6DF-732E-45EE-B811-FF2E8FDA94F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9374DFE-DCB9-4B8B-86B2-415C22504388}
+	EndGlobalSection
+EndGlobal

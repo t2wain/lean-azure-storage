@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\Lib\Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Infrastructure">
+      <HintPath>..\Lib\Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

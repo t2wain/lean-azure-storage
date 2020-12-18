@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ConsoleApp": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "RUNTIME_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

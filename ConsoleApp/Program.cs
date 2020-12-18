@@ -1,8 +1,5 @@
-﻿using AzureStorageLib;
-using Microsoft.Azure.Cosmos.Table;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
@@ -21,12 +18,14 @@ namespace ConsoleApp
 
         static void AzTest()
         {
-            var ex1 = new Ex1();
+            IServiceProvider services = StartupConfig.ConfigureServices();
+            var ex1 = services.GetService<Ex1>();
             //ex1.Test2();
             //ex1.Test3();
             //ex1.Test4();
             ex1.Test5();
             ex1.Test6();
+            ex1.Test7();
         }
     }
 }

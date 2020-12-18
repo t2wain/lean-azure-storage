@@ -1,4 +1,6 @@
 ﻿using AzureStorageLib;
+using Infrastructure.Data;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 
@@ -6,30 +8,31 @@ namespace ConsoleApp
 {
     public class Ex1
     {
-        string connStr = "";
+        AzureTable _az = null;
+        AdvWorks _avw = null;
+        AdventureWorksContext _db;
 
-        public Ex1()
+        public Ex1(AzureTable az, AdvWorks avw, AdventureWorksContext db)
         {
-            var root = StartupConfig.LoadAppSettings();
-            connStr = root["AzStorage:ConnectionString"];
+            _az = az;
+            _avw = avw;
+            _db = db;
         }
 
         public void Test2()
         {
-            var az = GetAz();
-            var tables = az.ListTables();
+            var tables = _az.ListTables();
             foreach (var t in tables)
                 Console.WriteLine(t.Name);
         }
 
         public void Test3()
         {
-            var az = GetAz();
-            az.GetCreateTable("Customers");
+            _az.GetCreateTable("Customers");
             //az.GetCreateTable("Orders");
             //az.GetCreateTable("SalesOrders");
 
-            var tables = az.ListTables();
+            var tables = _az.ListTables();
             foreach (var t in tables)
                 Console.WriteLine(t.Name);
 
@@ -37,28 +40,26 @@ namespace ConsoleApp
 
         public void Test4()
         {
-            var avw = new AdvWorks(GetAz());
-            var customers = avw.GetCustomersFromDB();
-            avw.InsertMergeCustomer(customers);
+            var customers = _avw.GetCustomersFromDB();
+            _avw.InsertMergeCustomer(customers);
         }
 
         public void Test5()
         {
-            var avw = new AdvWorks(GetAz());
-            var customers = avw.GetAllCustomers();
+            var customers = _avw.GetAllCustomers();
             Console.WriteLine($"Customers count: {customers.Count()}");
         }
 
         public void Test6()
         {
-            var avw = new AdvWorks(GetAz());
-            var customers = avw.GetCustomers();
+            var customers = _avw.GetCustomers();
             Console.WriteLine($"Customers count: {customers.Count()}");
         }
 
-        AzureTable GetAz()
+        public void Test7()
         {
-            return new AzureTable(connStr);
+            var customers = _db.Customer.ToList();
+            Console.WriteLine($"Customers from DB count: {customers.Count()}");
         }
     }
 }

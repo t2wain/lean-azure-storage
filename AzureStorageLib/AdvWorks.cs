@@ -15,10 +15,12 @@ namespace AzureStorageLib
         public const string TBL_CUSTOMERS = "Customers";
 
         AzureTable _az = null;
+        AdventureWorksContext _db = null;
 
-        public AdvWorks(AzureTable az)
+        public AdvWorks(AzureTable az, AdventureWorksContext db)
         {
             this._az = az;
+            this._db = db;
         }
 
         public IEnumerable<CustomerEntity> GetCustomersFromDB()
@@ -27,19 +29,16 @@ namespace AzureStorageLib
                 cfg.CreateMap<Customer, CustomerEntity>());
             var mapper = new Mapper(config);
 
-            using (var db = new AdventureWorksContext())
+            var customers = this._db.Customer.ToList();
+            var lst = new List<CustomerEntity>();
+            foreach (var c in customers)
             {
-                var customers = db.Customer.ToList();
-                var lst = new List<CustomerEntity>();
-                foreach (var c in customers)
-                {
-                    var e = mapper.Map<CustomerEntity>(c);
-                    e.PartitionKey = "Customer";
-                    e.RowKey = c.CustomerId.ToString();
-                    lst.Add(e);
-                }
-                return lst;
+                var e = mapper.Map<CustomerEntity>(c);
+                e.PartitionKey = "Customer";
+                e.RowKey = c.CustomerId.ToString();
+                lst.Add(e);
             }
+            return lst;
         }
 
         public void InsertMergeCustomer(IEnumerable<CustomerEntity> customers)
